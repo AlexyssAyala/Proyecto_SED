@@ -7,12 +7,17 @@ if (isset($_POST['register'])) {
 	    $name = trim($_POST['name']);
 	    $email = trim($_POST['email']);
 	    $pass = trim($_POST['pass']);
+	    $hash = password_hash($pass, PASSWORD_DEFAULT);
 	    $fechareg = date("d/m/y");
-	    $consulta = "INSERT INTO datos(nombre, email, pass, fecha_reg) VALUES ('$name','$email', '$pass', '$fechareg')";
+	    $consulta = "INSERT INTO datos(nombre, email, pass, fecha_reg) VALUES ('$name','$email', '$hash', '$fechareg')";
 	    $resultado = mysqli_query($conex,$consulta);
 	    if ($resultado) {
+	
 	    	?> 
+
+			
 	    	<h3 class="ok">¡Te has inscripto correctamente!</h3>
+				
            <?php
 	    } else {
 	    	?> 

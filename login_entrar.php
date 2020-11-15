@@ -9,21 +9,23 @@ if (isset($_POST['register'])) {
 	    $pass = trim($_POST['pass']);
 	    
 	    $fechareg = date("d/m/y");
-       	    $consulta = "SELECT id, nombre  FROM `datos` WHERE `email`= '$email' AND `pass`= '$pass'";
+       	    $consulta = "SELECT id, nombre, pass  FROM `datos` WHERE `email`= '$email'";
  	    $resultado = mysqli_query($conex,$consulta);
 	    $count = mysqli_num_rows($resultado);
 	    $row = mysqli_fetch_assoc($resultado);
 	    $pre_has = $row['id'];
 	    $nombre_user = $row['nombre'];	    
 	    if ($count == 1) {
+			if (password_verify($pass, $row['pass'])) {
+ 			  $_SESSION['id'] = $pre_has;
+                 	$_SESSION['nombre']= $nombre_user;
+                	header ("Location: menu.php");
+
+			} else {
+    			echo 'La contraseña no es válida.';
+			}
 	    	?> 
-		echo "pre_has";
-	    	<h3 class="ok">¡Te has inscripto correctamente!</h3>
-		<?php
-		 $_SESSION['id'] = $pre_has;
-		 $_SESSION['nombre']= $nombre_user;
-		header ("Location: home.php");
-		?>
+		
            <?php
 	    } else {
 	    	?> 

@@ -18,14 +18,24 @@ if(!isset($nombre)){
 
     echo "<h1> BIENVENIDO $nombre </h1><br>";
 
-    echo "<a href='salir.php'>Salir</a>";
+   // echo "<a href='salir.php'>Salir</a>";
 }
 ?>
 	<form method="post">
+<h3>Categoria de vuelo </h3>
+<input list="tipo_vuelo" name="tipo_vuelo">
+<datalist id="tipo_vuelo">
+  <option value="Economica">
+  <option value="Ejecutivo">
+  <option value="Primera clase">
+
+
+</datalist>
+<br>
+<br>
  Fecha de Salida:  <input type="date" name="salida"><br>
 	<br>
-    Fecha de  Retorno: <input type="date" name="llegada"><br>
-    
+    Fecha de  Retorno: <input type="date" name="llegada"><br>    
 <h3>Salidas</h3>
      <input list="browsers" name="salidas_pais">
     <datalist id="browsers">
@@ -66,8 +76,9 @@ if(!isset($nombre)){
     <option value="Colombia">
     <option value="Africa">
   </datalist>
-    <input type="submit" value="Enviar" name="enviar">
+ <input type="submit" value="Enviar" name="enviar">
 <a href="recibo.php"><input type="button" value="Ver tus vuelos"></a>
+<a href="menu.php"><input type="button" value="Regresar"></a>
 
 </form>
 

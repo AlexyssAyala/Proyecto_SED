@@ -20,6 +20,7 @@ if  (isset($_GET['id'])) {
     $llegada_fecha = $row['hora_llegada'];
     $salida_pais = $row['partida'];
     $llegada_pais = $row['destino'];
+    $tipo_vuelo = $row['tipo_vuelo'];
   }
 }
 
@@ -28,10 +29,11 @@ if (isset($_POST['update'])) {
   $salida_fecha= $_POST['salida'];
   $llegada_fecha = $_POST['llegada'];
   $salida_pais = $_POST['salidas_pais'];
-  $llegada_pais = $_POST['destinos_pais'];  
+  $llegada_pais = $_POST['destinos_pais'];
+  $tipo_vuelo = $_POST['tipo_vuelo'];  
 
 
-  $query = "UPDATE info_vuelos SET `partida`= '$salida_pais',`destino`='$llegada_pais',`hora_salida`='$salida_fecha',`hora_llegada`='$llegada_fecha' WHERE id=$id";
+  $query = "UPDATE info_vuelos SET `partida`= '$salida_pais',`destino`='$llegada_pais',`hora_salida`='$salida_fecha',`hora_llegada`='$llegada_fecha', `tipo_vuelo`= '$tipo_vuelo' WHERE id=$id";
   mysqli_query($conex, $query);
   $_SESSION['message'] = ' Updated Successfully';
   $_SESSION['message_type'] = 'warning';
@@ -40,10 +42,22 @@ if (isset($_POST['update'])) {
 ?>
 
   <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="post" >
+<h3>Categoria de vuelo </h3>
+<input list="tipo_vuelo" name="tipo_vuelo" value="<?php echo $tipo_vuelo; ?>"  >
+<datalist id="tipo_vuelo">
+  <option value="Economica">
+  <option value="Ejecutivo">
+  <option value="Primera clase">
+
+
+</datalist>
+<br>
+<br>
+
  Fecha de Salida:  <input type="date" name="salida" value="<?php echo $salida_fecha; ?>"<br>
         <br>
     Fecha de  Retorno: <input type="date" name="llegada" value="<?php echo $llegada_fecha; ?>" ><br>
-    <h3>Salidas</h3>
+   
 
 <h3>Salidas</h3>
      <input list="browsers" name="salidas_pais" value="<?php echo $salida_pais; ?>">

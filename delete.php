@@ -4,6 +4,7 @@ include("con_db.php");
 
 if(isset($_GET['id'])) {
   $id = $_GET['id'];
+	echo $id;
   $query = "DELETE FROM info_vuelos  WHERE id = $id";
   $result = mysqli_query($conex, $query);
   if(!$result) {

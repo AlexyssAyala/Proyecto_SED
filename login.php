@@ -12,10 +12,13 @@
     	<input type="email" name="email" placeholder="Email" class="form-input" required/>
 	<input type="password" name="pass" placeholder="Password" class="form-input" required/>
     	<input type="submit" name="register" value="Entrar" class="form-btn">
+	<a href="index.php"><input type="button" value="Regresar" class="form-btn" ></a>
+ 
     </form>
         <?php 
         include("login_entrar.php");
         ?>
+
 </center>
 </body>
 </html>
