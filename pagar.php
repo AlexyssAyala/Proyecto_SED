@@ -3,56 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Pagar vuelo</title>
   <style>
 
   </style>
 </head>
 <body>
 
-
-<div class="container">
-  <div class="col1">
-    <div class="card">
-      <div class="front">
-        <div class="type">
-          <img class="bankid"/>
-        </div>
-       
-      </div>
-      <div class="back">
-        <div class="magnetic"></div>
-        <div class="bar"></div>
-        </div>
-    </div>
-  </div>
-  <div class="col2">
-    <label>Card Number</label>
-    <input class="number" type="text" ng-model="ncard" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
-  <br> 
- <label>Cardholder name</label>
-    <input class="inputname" type="text" placeholder=""/>
-    <br><label>Expiry date</label>
-    <input class="expire" type="text" placeholder="MM / YYYY"/>
-    <br><label>Security Number</label>
-    <input class="ccv" type="text" placeholder="CVC" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
-    <br>
 <?php
-include("con_db.php");
-if  (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $query = "SELECT tipo_vuelo FROM info_vuelos WHERE id=$id";
-  $result = mysqli_query($conex, $query);
-  if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_array($result);
-    $tipo_vuelo = $row['tipo_vuelo'];
-}
-}
-echo $tipo_vuelo;
+ session_start();
+ $precio_vuelo = $_SESSION['precio'];
+ $id_sesion = $_SESSION['id'];
+  echo "Total a pagar: $ ";
+  echo  $precio_vuelo;
+  echo  $id_sesion;
 ?>
-<button class="buy"><i class="material-icons">lock</i> Pay --.-- €</button>
-  </div>
-</div>
+<br>
+   <!DOCTYPE html>
+<html>
+<head>
+      	<title>Registrar usuario</title>
+        <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <form method="post">
+        <h1>Ingresa tu tarjeta</h1>
+
+Card Number  <input type="number" name="numero_tarjeta" placeholder="Card Number" class="form-input" required/>
+Cardholder name    <input type="text" name="nombre_tarjeta" placeholder="Cardholder name" class="form-input" required/>  
+Expiry date  <input type="number" name="expiracion" placeholder="MM/YY" class="form-input"requiered />
+Security Number <input type="number" name="cvc" placeholder="CVC" class="form-input"requiered /> 
+  <input class="form-btn"  type="submit" name="register" value="Pagar">
+        </form>
+        <?php 
+	include("pagar_insert.php");
+        ?>
+	
+</body>
+</html> 
+
+
+
 
 </body>
 </html>

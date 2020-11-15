@@ -1,6 +1,6 @@
 <?php 
-
 include("con_db.php");
+session_start();
 
 if (isset($_POST['register'])) {
     if (strlen($_POST['name']) >= 1 && strlen($_POST['email']) >= 1 && strlen($_POST['pass']) >=1) {
@@ -12,13 +12,18 @@ if (isset($_POST['register'])) {
 	    $consulta = "INSERT INTO datos(nombre, email, pass, fecha_reg) VALUES ('$name','$email', '$hash', '$fechareg')";
 	    $resultado = mysqli_query($conex,$consulta);
 	    if ($resultado) {
-	
+		$_SESSION['email'] = $email;
+
+			 header ("Location: login.php");
+		
+
 	    	?> 
 
 			
 	    	<h3 class="ok">¡Te has inscripto correctamente!</h3>
 				
            <?php
+		
 	    } else {
 	    	?> 
 	    	<h3 class="bad">¡Ups ha ocurrido un error!</h3>

@@ -14,7 +14,7 @@
     	<input type="text" name="name" placeholder="Nombre completo" class="form-input" required/>
     	<input type="email" name="email" placeholder="Email" class="form-input" required/>  
 	<input type="password" name="pass" placeholder="Password" class="form-input" />
-    	<input class="form-btn"  type="submit" name="register" value="Login">
+    	<input class="form-btn"  type="submit" name="register" value="Registrarse">
 	</form>
         <?php 
         include("registrar.php");

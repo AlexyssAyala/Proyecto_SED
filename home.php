@@ -21,7 +21,7 @@ if(!isset($nombre)){
    // echo "<a href='salir.php'>Salir</a>";
 }
 ?>
-	<form method="post">
+	<form  method="post">
 <h3>Categoria de vuelo </h3>
 <input list="tipo_vuelo" name="tipo_vuelo">
 <datalist id="tipo_vuelo">

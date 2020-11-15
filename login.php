@@ -9,7 +9,12 @@
  <center>
     <form method="post">
     	<h1>Login</h1>
-    	<input type="email" name="email" placeholder="Email" class="form-input" required/>
+	<?php
+	session_start();
+	$email = $_SESSION['email'];
+
+	?>
+    	<input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" class="form-input" required/>
 	<input type="password" name="pass" placeholder="Password" class="form-input" required/>
     	<input type="submit" name="register" value="Entrar" class="form-btn">
 	<a href="index.php"><input type="button" value="Regresar" class="form-btn" ></a>

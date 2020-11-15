@@ -2,6 +2,7 @@
 session_start();
 include("con_db.php");
 
+$sesion = $_SESSION['id'];
 if (isset($_POST['register'])) {
     if (strlen($_POST['pass']) >= 1 && strlen($_POST['email']) >= 1) {
 	    $name = trim($_POST['name']);

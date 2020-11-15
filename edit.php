@@ -21,8 +21,11 @@ if  (isset($_GET['id'])) {
     $salida_pais = $row['partida'];
     $llegada_pais = $row['destino'];
     $tipo_vuelo = $row['tipo_vuelo'];
+    $precio_vuelo = $row['precio'];
   }
 }
+             
+           
 
 if (isset($_POST['update'])) {
   $id = $_GET['id'];
@@ -31,9 +34,16 @@ if (isset($_POST['update'])) {
   $salida_pais = $_POST['salidas_pais'];
   $llegada_pais = $_POST['destinos_pais'];
   $tipo_vuelo = $_POST['tipo_vuelo'];  
+ if($tipo_vuelo == "Economica"){
+                $precio_vuelo = "50.00";          
+                }elseif($tipo_vuelo == "Ejecutivo" ){
+                $precio_vuelo = "150.00";
+                }elseif($tipo_vuelo == "Primera clase"){
+                $precio_vuelo = "300.00";
+                }
 
-
-  $query = "UPDATE info_vuelos SET `partida`= '$salida_pais',`destino`='$llegada_pais',`hora_salida`='$salida_fecha',`hora_llegada`='$llegada_fecha', `tipo_vuelo`= '$tipo_vuelo' WHERE id=$id";
+	echo $precio_vuelo;
+  $query = "UPDATE info_vuelos SET `partida`= '$salida_pais',`destino`='$llegada_pais',`hora_salida`='$salida_fecha',`hora_llegada`='$llegada_fecha', `tipo_vuelo`= '$tipo_vuelo', `precio`= '$precio_vuelo' WHERE id=$id";
   mysqli_query($conex, $query);
   $_SESSION['message'] = ' Updated Successfully';
   $_SESSION['message_type'] = 'warning';
