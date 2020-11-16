@@ -32,7 +32,7 @@
 		<?php 
 		session_start();
                 $sesion = $_SESSION['id'];
-echo $sesion;
+
 $sql="SELECT id,nombre,partida,destino,hora_salida,hora_llegada, tipo_vuelo, precio from info_vuelos WHERE id_sesion = $sesion";
 		$result=mysqli_query($conexion,$sql);
 
@@ -50,7 +50,11 @@ $sql="SELECT id,nombre,partida,destino,hora_salida,hora_llegada, tipo_vuelo, pre
 			<td><?php echo $mostrar['hora_llegada']?></td>
 			<td><?php echo $mostrar['tipo_vuelo']?></td>
 			<td><?php echo "$ ". $mostrar['precio']?></td>
-			<td>  <a href="edit.php?id=<?php echo $mostrar['id']?>"><i class="fas fa-edit"></i></a>
+			<?php
+			 $id_algo = $mostrar['id'];
+			 $id_algo = base64_encode($id_algo)
+			?>
+			<td>  <a href="edit.php?id=<?php echo $id_algo?>"><i class="fas fa-edit"></i></a>
 			<br>
 			<a href="delete.php?id=<?php echo $mostrar['id']?>"><i class="fas fa-trash-alt"></i></a></td>
 		</tr>

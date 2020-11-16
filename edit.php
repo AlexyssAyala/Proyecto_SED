@@ -12,6 +12,8 @@ include("con_db.php");
 	    
 if  (isset($_GET['id'])) {
   $id = $_GET['id'];
+ $id = base64_decode($id);
+
   $query = "SELECT * FROM info_vuelos WHERE id=$id";
   $result = mysqli_query($conex, $query);
   if (mysqli_num_rows($result) == 1) {
@@ -29,6 +31,8 @@ if  (isset($_GET['id'])) {
 
 if (isset($_POST['update'])) {
   $id = $_GET['id'];
+ $id = $_GET['id'];
+ $id = base64_decode($id);
   $salida_fecha= $_POST['salida'];
   $llegada_fecha = $_POST['llegada'];
   $salida_pais = $_POST['salidas_pais'];
@@ -48,10 +52,11 @@ if (isset($_POST['update'])) {
   $_SESSION['message'] = ' Updated Successfully';
   $_SESSION['message_type'] = 'warning';
   header('Location: recibo.php');
-}echo "hola";
+}
 ?>
 
-  <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="post" >
+  <form action="edit.php?id=<?php echo $_GET['id'] ?>" method="post" >
+
 <h3>Categoria de vuelo </h3>
 <input list="tipo_vuelo" name="tipo_vuelo" value="<?php echo $tipo_vuelo; ?>"  >
 <datalist id="tipo_vuelo">
