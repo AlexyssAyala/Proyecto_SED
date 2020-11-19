@@ -1,0 +1,19 @@
+User_Alias ADMINS = alexis
+ User_Alias WEBADMINS = rivas
+ User_Alias SOFTWAREADMINS = ismael
+ User_Alias DATABASEADMINS = kennet
+ User_Alias NETWORKINGADMINS = arevalo
+
+ Cmnd_Alias DATABASE = /usr/bin/sudo mysql -h localhost -u kennet -p
+
+
+
+## Services
+ Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig, /usr/bin/systemctl start httpd, /usr/bin/systemctl stop httpd, /usr/bin/systemctl reload httpd, /usr/bin/systemc>
+
+
+NETWORKINGADMINS  ALL=(ALL) NETWORKING
+  WEBADMINS  ALL=(ALL) SERVICES
+  DATABASEADMINS ALL=(ALL) DATABASE
+  SOFTWAREADMINS ALL=(ALL) SOFTWARE, PROCESSES
+
